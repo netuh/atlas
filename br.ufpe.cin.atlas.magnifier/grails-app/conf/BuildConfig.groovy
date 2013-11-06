@@ -60,6 +60,7 @@ grails.project.dependency.resolution = {
         compile ':cache:1.1.1'
 		compile ":joda-time:1.4"
 		compile ":excel-import:1.0.0"
+		compile ":google-visualization:0.6.2"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.2" // or ":hibernate4:4.1.11.2"

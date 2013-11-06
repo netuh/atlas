@@ -1,7 +1,4 @@
 <%@ page import="br.ufpe.cin.atlas.magnifier.PrimaryStudy" %>
-
-
-
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'observation', 'error')} ">
 	<label for="observation">
 		<g:message code="primaryStudy.observation.label" default="Observation" />

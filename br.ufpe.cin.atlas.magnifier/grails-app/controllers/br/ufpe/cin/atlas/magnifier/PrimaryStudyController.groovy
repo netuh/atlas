@@ -22,6 +22,42 @@ class PrimaryStudyController {
     def create() {
         respond new PrimaryStudy(params)
     }
+	
+	def analysesByYear(){
+		def studiesMap = [:]
+		def studiesMapByYear = [:]
+		PrimaryStudy.all.each {
+			if (!studiesMap.containsKey(it.getStudyType())){
+				studiesMap.put(it.getStudyType(), [it])
+			} else {
+				studiesMap.get(it.getStudyType()).add(it)
+			}
+		}
+		studiesMap.each() { key, value ->
+			def studyByYear = [:]
+			value.each {
+				if (!studyByYear.containsKey(it.getYear())){
+					studyByYear.put(it.getYear(), [it])
+				} else {
+					studyByYear.get(it.getYear()).add(it)
+				}
+			}
+			studiesMapByYear.put(key, studyByYear)
+		}
+		[ list:studiesMapByYear ]
+	}
+	
+	def empiricalStudies() {
+		def studiesMap = [:]
+		PrimaryStudy.all.each {
+			if (!studiesMap.containsKey(it.getStudyType())){
+				studiesMap.put(it.getStudyType(), [it])
+			} else {
+				studiesMap.get(it.getStudyType()).add(it)
+			}
+		}
+        [ list:studiesMap ]
+	}
 
     @Transactional
     def save(PrimaryStudy primaryStudyInstance) {
