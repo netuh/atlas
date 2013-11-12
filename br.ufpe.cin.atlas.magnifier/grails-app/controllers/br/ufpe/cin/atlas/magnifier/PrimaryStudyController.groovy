@@ -26,7 +26,15 @@ class PrimaryStudyController {
 	def analysesByYear(){
 		def mapStudyType2Study = [:]
 		def studiesMapByYear = [:]
-		PrimaryStudy.all.each {
+		def avalableStudies
+		
+		if (params.conference != null && params.conference != "All") {
+			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
+		} else {
+			avalableStudies = PrimaryStudy.all
+		}
+		
+		avalableStudies.each {
 			if (!mapStudyType2Study.containsKey(it.getStudyType())){
 				mapStudyType2Study.put(it.getStudyType(), [it])
 			} else {
@@ -50,7 +58,14 @@ class PrimaryStudyController {
 	
 	def empiricalStudies() {
 		def studiesMap = [:]
-		PrimaryStudy.all.each {
+		def avalableStudies
+		if (params.conference != null && params.conference != "All") {
+			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
+		} else {
+			avalableStudies = PrimaryStudy.all
+		}
+		
+		avalableStudies.each {
 			if (!studiesMap.containsKey(it.getStudyType())){
 				studiesMap.put(it.getStudyType(), [it])
 			} else {

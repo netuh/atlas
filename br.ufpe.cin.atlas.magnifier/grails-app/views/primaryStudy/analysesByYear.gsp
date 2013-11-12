@@ -34,6 +34,22 @@
 <title>Primary Studies by Study Type</title>
 </head>
 <body>
+	<a href="#create-primaryStudy" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<div class="nav" role="navigation">
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+		</ul>
+	</div>
+	<g:form controller="primaryStudy">
+		<select name="conference">
+			<option value="EASE">EASE</option>
+			<option value="ESEM">ESEM</option>
+			<option value="ESEJ">ESEJ</option>
+			<option value="All" selected>All</option>
+		</select>
+		<g:actionSubmit action="analysesByYear"
+			value="${message(code: 'default.button.update.label', default: 'Update')}" />
+	</g:form>
 	<h1>Primary Studies by Year</h1>
 	<g:each in="${list}" var="study">
 		<p><b>${study.key}</b></p>

@@ -28,15 +28,36 @@
 <title>Primary Studies by Study Type</title>
 </head>
 <body>
+	<a href="#create-primaryStudy" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+	<div class="nav" role="navigation">
+		<ul>
+			<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
+		</ul>
+	</div>
+	<g:form controller="primaryStudy">
+		<select name="conference">
+			<option value="EASE">EASE</option>
+			<option value="ESEM">ESEM</option>
+			<option value="ESEJ">ESEJ</option>
+			<option value="All" selected >All</option>
+		</select>
+		<g:actionSubmit action="empiricalStudies"
+			value="${message(code: 'default.button.update.label', default: 'Update')}" />
+	</g:form>
 	<div id="piechart2" style="width: 900px; height: 500px;"></div>
-	<h1>Primary Studies by Study Type</h1>
+	<h1>
+		<g:message code="primaryStudy.byType.label"
+			default="Primary Studies by Study Type" />
+	</h1>
 	<dl>
-	<g:each in="${list}" var="study">
-		<dt><b>${study.key}</b></dt>
-		<g:each in="${study.value}" var="aStudy">
-			<dd>- ${aStudy.getTitle()}</dd>
+		<g:each in="${list}" var="study">
+			<dt>
+				<b>${study.key}</b>
+			</dt>
+			<g:each in="${study.value}" var="aStudy">
+				<dd>-${aStudy.getStudyId()}: ${aStudy.getTitle()}</dd>
+			</g:each>
 		</g:each>
-	</g:each>
 	</dl>
 
 </body>

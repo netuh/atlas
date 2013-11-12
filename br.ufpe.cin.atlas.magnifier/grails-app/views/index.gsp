@@ -114,8 +114,17 @@
 					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
 					</g:each>
+					<li class="controller">PrimaryStudy</li>
+					<ul>
 						<li class="controller"><g:link controller="primaryStudy" action="empiricalStudies">Empirical Studies</g:link></li>
 						<li class="controller"><g:link controller="primaryStudy" action="analysesByYear">Analyse By Year</g:link></li>
+					</ul>
+					<li class="controller">Mechanism</li>
+					<ul>
+						<li class="controller"><g:link controller="mechanism" action="analyseByEmpiricalMethod">Analyses By Empirical Method</g:link></li>
+						<li class="controller"><g:link controller="mechanism" action="analyseByYear">Analyse By Year</g:link></li>
+						<li class="controller"><g:link controller="mechanism" action="analyseByQuantity">Analyse By Quantity</g:link></li>
+					</ul>
 				</ul>
 			</div>
 		</div>

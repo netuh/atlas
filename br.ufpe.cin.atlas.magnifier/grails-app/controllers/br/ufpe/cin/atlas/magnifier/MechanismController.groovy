@@ -23,9 +23,51 @@ class MechanismController {
         respond new Mechanism(params)
     }
 	
-	def analyseByEmpiricMethod() {
+	def analyseByQuantity() {
+		def mechanismByQuantity = [:]
+		def avalableStudies = []
+		
+		if (params.conference != null && params.conference != "All") {
+			PrimaryStudy.findAllByConferenceSource(params.conference).each {
+				avalableStudies.addAll(it.getMechanisms())
+			}
+		} else {
+			avalableStudies = Mechanism.all
+		}
+		
+		avalableStudies.each {
+			def empContent = it.getContent()
+			if (!mechanismByQuantity.containsKey(empContent)){
+				mechanismByQuantity.put(empContent, [it])
+			} else {
+				mechanismByQuantity.get(empContent).add(it)
+			}
+		}
+		def importMechanismByQuantity = [:]
+		mechanismByQuantity.each {
+			if (it.value.size() > 1){
+				importMechanismByQuantity.put(it.key, it.value.size())
+			}
+		}
+		
+		mechanismByQuantity= mechanismByQuantity.sort { it.value.size()}
+		
+		[ list:importMechanismByQuantity,fullList:mechanismByQuantity ]
+	}
+	
+	def analyseByEmpiricalMethod() {
 		def mechanismByEmpMethods = [:]
-		Mechanism.all.each {
+		def avalableStudies = []
+		
+		if (params.conference != null && params.conference != "All") {
+			PrimaryStudy.findAllByConferenceSource(params.conference).each {
+				avalableStudies.addAll(it.getMechanisms())
+			}
+		} else {
+			avalableStudies = Mechanism.all
+		}
+		
+		avalableStudies.each {
 			def empMethod = it.getOwner().getStudyType()
 			if (!mechanismByEmpMethods.containsKey(empMethod)){
 				mechanismByEmpMethods.put(empMethod, [it])
@@ -34,6 +76,30 @@ class MechanismController {
 			}
 		}
 		[ list:mechanismByEmpMethods ]
+	}
+	
+	def analyseByYear() {
+		def mechanismByYear = [:]
+		def avalableStudies = []
+		
+		if (params.conference != null && params.conference != "All") {
+			PrimaryStudy.findAllByConferenceSource(params.conference).each {
+				avalableStudies.addAll(it.getMechanisms())
+			}
+		} else {
+			avalableStudies = Mechanism.all
+		}
+		
+		avalableStudies.each {
+			def mechYear = it.getOwner().getYear()
+			if (!mechanismByYear.containsKey(mechYear)){
+				mechanismByYear.put(mechYear, [it])
+			} else {
+				mechanismByYear.get(mechYear).add(it)
+			}
+		}
+		mechanismByYear= mechanismByYear.sort { it.key}
+		[ list:mechanismByYear ]
 	}
 
     @Transactional
