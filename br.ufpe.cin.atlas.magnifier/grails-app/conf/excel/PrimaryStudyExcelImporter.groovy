@@ -14,15 +14,17 @@ class PrimaryStudyExcelImporter extends AbstractExcelImporter {
                   'A':'id',
                   'B':'title',
                   'C':'year',
-				  'D':'authors',
-				  'E':'institution',
-				  'F':'empiricalStudy',
-				  'G':'mechRef',
-				  'H':'mechType',
-				  'I':'authorDef',
-				  'J':'domain',
-				  'K':'obs',
-				  'L':'include'
+				  'D':'source',
+				  'E':'authors',
+				  'F':'institution',
+				  'G':'empiricalStudy',
+				  'H':'mechRef',
+				  'I':'mechType',
+				  'J':'authorDef',
+				  'K':'domain',
+				  'L':'typeDomain',
+				  'M':'obs',
+				  'N':'include'
           ]
   ]
 

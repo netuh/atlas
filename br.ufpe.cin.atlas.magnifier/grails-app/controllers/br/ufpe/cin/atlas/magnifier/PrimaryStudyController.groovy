@@ -24,25 +24,26 @@ class PrimaryStudyController {
     }
 	
 	def analysesByYear(){
-		def studiesMap = [:]
+		def mapStudyType2Study = [:]
 		def studiesMapByYear = [:]
 		PrimaryStudy.all.each {
-			if (!studiesMap.containsKey(it.getStudyType())){
-				studiesMap.put(it.getStudyType(), [it])
+			if (!mapStudyType2Study.containsKey(it.getStudyType())){
+				mapStudyType2Study.put(it.getStudyType(), [it])
 			} else {
-				studiesMap.get(it.getStudyType()).add(it)
+				mapStudyType2Study.get(it.getStudyType()).add(it)
 			}
 		}
-		studiesMap.each() { key, value ->
-			def studyByYear = [:]
-			value.each {
-				if (!studyByYear.containsKey(it.getYear())){
-					studyByYear.put(it.getYear(), [it])
+		mapStudyType2Study.each { studyType, studies ->
+			def mapYear2Study = [:]
+			studies.each {
+				if (!mapYear2Study.containsKey(it.getYear())){
+					mapYear2Study.put(it.getYear(), [it])
 				} else {
-					studyByYear.get(it.getYear()).add(it)
+					mapYear2Study.get(it.getYear()).add(it)
 				}
 			}
-			studiesMapByYear.put(key, studyByYear)
+			mapYear2Study= mapYear2Study.sort { it.key}
+			studiesMapByYear.put(studyType, mapYear2Study)
 		}
 		[ list:studiesMapByYear ]
 	}

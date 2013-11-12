@@ -11,5 +11,6 @@ class PrimaryStudy {
 		
 	static constraints = {
 		observation  nullable: true
+		mechanisms lazy:false
 	}
 }

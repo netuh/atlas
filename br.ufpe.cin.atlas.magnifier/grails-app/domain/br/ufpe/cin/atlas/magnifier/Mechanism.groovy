@@ -6,6 +6,9 @@ class Mechanism {
 	Boolean definedByAuthor
 	String domain
 	
+	PrimaryStudy owner
+	
 	static constraints = {
+		content size: 1..5000
 	}
 }
