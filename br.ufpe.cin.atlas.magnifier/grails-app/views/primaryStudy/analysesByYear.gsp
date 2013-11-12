@@ -19,6 +19,8 @@
 
 			var options = {
 				title : '${studyType.key}',
+				hAxis: {title: "Primary Studies"},
+				vAxis: {minValue:0},
 				pointSize: 3
 			};
 

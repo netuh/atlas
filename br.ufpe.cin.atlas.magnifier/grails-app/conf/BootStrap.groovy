@@ -22,7 +22,12 @@ class BootStrap {
 					println "Id="+ it["id"]
 					println "source="+ it["source"]
 					currentPrimaryStudy.setYear(it["year"] == null ? 0 : it["year"].toInteger())
-					currentPrimaryStudy.setStudyType(it["empiricalStudy"].toLowerCase().replaceAll(";", ""))
+					
+					it["empiricalStudy"].split(";").each {
+						if (it)
+							currentPrimaryStudy.addToStudyTypes(it.toLowerCase())
+					}
+					//currentPrimaryStudy.setStudyType(it["empiricalStudy"].toLowerCase().replaceAll(";", ""))
 					currentPrimaryStudy.setObservation(it["obs"])
 					it["authors"].split(";").each { authorName ->
 						currentPrimaryStudy.addToAuthors(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ))

@@ -18,7 +18,8 @@
 
         var options = {
           title : 'Mechanism by Year',
-          hAxis: {title: "Year"},
+          hAxis: {title: "Year",
+        	 	  minValue:0},
           seriesType: "bars"
         };
 
