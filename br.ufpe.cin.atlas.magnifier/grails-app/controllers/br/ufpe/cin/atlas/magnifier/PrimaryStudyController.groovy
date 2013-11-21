@@ -53,7 +53,7 @@ class PrimaryStudyController {
 			mapYear2Study= mapYear2Study.sort { it.key}
 			studiesMapByYear.put(studyType, mapYear2Study)
 		}
-		[ list:studiesMapByYear ]
+		[ list:studiesMapByYear, conference:params.conference ]
 	}
 	
 	def empiricalStudies() {
@@ -72,7 +72,7 @@ class PrimaryStudyController {
 				studiesMap.get(it.getStudyType()).add(it)
 			}
 		}
-        [ list:studiesMap ]
+        [ list:studiesMap , conference:params.conference ]
 	}
 
     @Transactional

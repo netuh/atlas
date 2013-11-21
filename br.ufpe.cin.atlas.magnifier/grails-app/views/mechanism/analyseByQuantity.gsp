@@ -54,6 +54,9 @@
 		<g:message code="primaryStudy.byType.label"
 			default="Primary Studies by Study Type" />
 	</h1>
+	<h1>
+		Total: ${fullList.size()}
+	</h1>
 	<dl>
 		<g:each in="${fullList}" var="study">
 			<dt>

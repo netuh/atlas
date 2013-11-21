@@ -88,19 +88,23 @@ environments {
         grails.logging.jul.usebridge = true
     }
     production {
-        grails.logging.jul.usebridge = false
+		log4j = { }
+        //grails.logging.jul.usebridge = false
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
 
 // log4j configuration
 log4j = {
+	root {
+		error 'infoLog', 'errorLog', 'warnLog', 'debugLog'
+	}
     // Example of changing the log pattern for the default console appender:
     //
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
-
+/*
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -112,4 +116,5 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+           */
 }

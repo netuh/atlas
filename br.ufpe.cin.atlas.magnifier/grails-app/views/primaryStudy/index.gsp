@@ -24,15 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="observation" title="${message(code: 'primaryStudy.observation.label', default: 'Observation')}" />
-					
 						<g:sortableColumn property="studyId" title="${message(code: 'primaryStudy.studyId.label', default: 'Study Id')}" />
 					
-						<g:sortableColumn property="studyType" title="${message(code: 'primaryStudy.studyType.label', default: 'Study Type')}" />
+						<g:sortableColumn property="conferenceSource" title="${message(code: 'primaryStudy.conferenceSource.label', default: 'Conference Source')}" />
 					
 						<g:sortableColumn property="title" title="${message(code: 'primaryStudy.title.label', default: 'Title')}" />
 					
 						<g:sortableColumn property="year" title="${message(code: 'primaryStudy.year.label', default: 'Year')}" />
+						
+						<g:sortableColumn property="observation" title="${message(code: 'primaryStudy.observation.label', default: 'Observation')}" />
 					
 					</tr>
 				</thead>
@@ -40,15 +40,15 @@
 				<g:each in="${primaryStudyInstanceList}" status="i" var="primaryStudyInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${primaryStudyInstance.id}">${fieldValue(bean: primaryStudyInstance, field: "observation")}</g:link></td>
+						<td><g:link action="show" id="${primaryStudyInstance.id}">${fieldValue(bean: primaryStudyInstance, field: "studyId")}</g:link></td>
 					
-						<td>${fieldValue(bean: primaryStudyInstance, field: "studyId")}</td>
+						<td>${fieldValue(bean: primaryStudyInstance, field: "conferenceSource")}</td>
 					
-						<td>${fieldValue(bean: primaryStudyInstance, field: "studyType")}</td>
+						<td>${fieldValue(bean: primaryStudyInstance, field: "year")}</td>
 					
 						<td>${fieldValue(bean: primaryStudyInstance, field: "title")}</td>
 					
-						<td>${fieldValue(bean: primaryStudyInstance, field: "year")}</td>
+						<td>${fieldValue(bean: primaryStudyInstance, field: "observation")}</td>
 					
 					</tr>
 				</g:each>

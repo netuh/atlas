@@ -32,11 +32,31 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${primaryStudyInstance?.mechanisms}">
+				<li class="fieldcontain">
+					<span id="mechanisms-label" class="property-label"><g:message code="primaryStudy.mechanisms.label" default="Mechanisms" /></span>
+					
+						<g:each in="${primaryStudyInstance.mechanisms}" var="m">
+						<span class="property-value" aria-labelledby="mechanisms-label"><g:link controller="mechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						</g:each>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${primaryStudyInstance?.authors}">
 				<li class="fieldcontain">
 					<span id="authors-label" class="property-label"><g:message code="primaryStudy.authors.label" default="Authors" /></span>
 					
 						<span class="property-value" aria-labelledby="authors-label"><g:fieldValue bean="${primaryStudyInstance}" field="authors"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${primaryStudyInstance?.conferenceSource}">
+				<li class="fieldcontain">
+					<span id="conferenceSource-label" class="property-label"><g:message code="primaryStudy.conferenceSource.label" default="Conference Source" /></span>
+					
+						<span class="property-value" aria-labelledby="conferenceSource-label"><g:fieldValue bean="${primaryStudyInstance}" field="conferenceSource"/></span>
 					
 				</li>
 				</g:if>
@@ -52,17 +72,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${primaryStudyInstance?.mechanisms}">
-				<li class="fieldcontain">
-					<span id="mechanisms-label" class="property-label"><g:message code="primaryStudy.mechanisms.label" default="Mechanisms" /></span>
-					
-						<g:each in="${primaryStudyInstance.mechanisms}" var="m">
-						<span class="property-value" aria-labelledby="mechanisms-label"><g:link controller="mechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${primaryStudyInstance?.studyId}">
 				<li class="fieldcontain">
 					<span id="studyId-label" class="property-label"><g:message code="primaryStudy.studyId.label" default="Study Id" /></span>
@@ -72,11 +81,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${primaryStudyInstance?.studyType}">
+				<g:if test="${primaryStudyInstance?.studyTypes}">
 				<li class="fieldcontain">
-					<span id="studyType-label" class="property-label"><g:message code="primaryStudy.studyType.label" default="Study Type" /></span>
+					<span id="studyTypes-label" class="property-label"><g:message code="primaryStudy.studyTypes.label" default="Study Types" /></span>
 					
-						<span class="property-value" aria-labelledby="studyType-label"><g:fieldValue bean="${primaryStudyInstance}" field="studyType"/></span>
+						<span class="property-value" aria-labelledby="studyTypes-label"><g:fieldValue bean="${primaryStudyInstance}" field="studyTypes"/></span>
 					
 				</li>
 				</g:if>

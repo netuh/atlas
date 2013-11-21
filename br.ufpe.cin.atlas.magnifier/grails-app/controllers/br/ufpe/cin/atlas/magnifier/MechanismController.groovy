@@ -52,7 +52,7 @@ class MechanismController {
 		
 		mechanismByQuantity= mechanismByQuantity.sort { it.value.size()}
 		
-		[ list:importMechanismByQuantity,fullList:mechanismByQuantity ]
+		[ list:importMechanismByQuantity,fullList:mechanismByQuantity , conference:params.conference ]
 	}
 	
 	def analyseByEmpiricalMethod() {
@@ -75,22 +75,59 @@ class MechanismController {
 				mechanismByEmpMethods.get(empMethod).add(it)
 			}
 		}
-		[ list:mechanismByEmpMethods ]
+		[ list:mechanismByEmpMethods , conference:params.conference ]
+	}
+	
+	def analyseByYearNew() {
+		def studyByYear = [:]
+		def avalableMechanism = []
+		def primaryStudies = []
+		if (params.conference != null && params.conference != "All") {
+			primaryStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
+		} else {
+			primaryStudies = PrimaryStudy.all
+		}
+		
+		primaryStudies.each {
+			def studyYear = it.getYear()
+			def studyList;
+			if (!studyByYear.containsKey(studyYear)){
+				studyList = []
+				studyByYear.put(studyYear, studyList)
+			} else {
+				studyList = studyByYear.get(studyYear)
+			}
+			if (it.getMechanisms()) {
+				studyList.add(it)
+			}
+		}
+		studyByYear= studyByYear.sort { it.key}
+		def finalListStudies = []
+		studyByYear.each {
+			def year = it.key
+			def studiesByYear = []
+			primaryStudies.each {
+				if (it.year == year)
+					studiesByYear.add(it)
+			}
+			finalListStudies.add([year:it.key, mech:it.value.size(), total:studiesByYear.size()])
+		}
+		[ list:studyByYear, newList : finalListStudies ]
 	}
 	
 	def analyseByYear() {
 		def mechanismByYear = [:]
-		def avalableStudies = []
+		def avalableMechanism = []
 		
 		if (params.conference != null && params.conference != "All") {
 			PrimaryStudy.findAllByConferenceSource(params.conference).each {
-				avalableStudies.addAll(it.getMechanisms())
+				avalableMechanism.addAll(it.getMechanisms())
 			}
 		} else {
-			avalableStudies = Mechanism.all
+			avalableMechanism = Mechanism.all
 		}
 		
-		avalableStudies.each {
+		avalableMechanism.each {
 			def mechYear = it.getOwner().getYear()
 			if (!mechanismByYear.containsKey(mechYear)){
 				mechanismByYear.put(mechYear, [it])

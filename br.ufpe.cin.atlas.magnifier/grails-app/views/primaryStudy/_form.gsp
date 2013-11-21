@@ -1,10 +1,30 @@
 <%@ page import="br.ufpe.cin.atlas.magnifier.PrimaryStudy" %>
+
+
+
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'observation', 'error')} ">
 	<label for="observation">
 		<g:message code="primaryStudy.observation.label" default="Observation" />
 		
 	</label>
 	<g:textField name="observation" value="${primaryStudyInstance?.observation}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'mechanisms', 'error')} ">
+	<label for="mechanisms">
+		<g:message code="primaryStudy.mechanisms.label" default="Mechanisms" />
+		
+	</label>
+	
+<ul class="one-to-many">
+<g:each in="${primaryStudyInstance?.mechanisms?}" var="m">
+    <li><g:link controller="mechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="mechanism" action="create" params="['primaryStudy.id': primaryStudyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'mechanism.label', default: 'Mechanism')])}</g:link>
+</li>
+</ul>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'authors', 'error')} ">
@@ -15,20 +35,20 @@
 	
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'conferenceSource', 'error')} ">
+	<label for="conferenceSource">
+		<g:message code="primaryStudy.conferenceSource.label" default="Conference Source" />
+		
+	</label>
+	<g:textField name="conferenceSource" value="${primaryStudyInstance?.conferenceSource}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'intituitions', 'error')} ">
 	<label for="intituitions">
 		<g:message code="primaryStudy.intituitions.label" default="Intituitions" />
 		
 	</label>
 	<g:select name="intituitions" from="${br.ufpe.cin.atlas.magnifier.Institution.list()}" multiple="multiple" optionKey="id" size="5" value="${primaryStudyInstance?.intituitions*.id}" class="many-to-many"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'mechanisms', 'error')} ">
-	<label for="mechanisms">
-		<g:message code="primaryStudy.mechanisms.label" default="Mechanisms" />
-		
-	</label>
-	<g:select name="mechanisms" from="${br.ufpe.cin.atlas.magnifier.Mechanism.list()}" multiple="multiple" optionKey="id" size="5" value="${primaryStudyInstance?.mechanisms*.id}" class="many-to-many"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'studyId', 'error')} ">
@@ -39,12 +59,12 @@
 	<g:textField name="studyId" value="${primaryStudyInstance?.studyId}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'studyType', 'error')} ">
-	<label for="studyType">
-		<g:message code="primaryStudy.studyType.label" default="Study Type" />
+<div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'studyTypes', 'error')} ">
+	<label for="studyTypes">
+		<g:message code="primaryStudy.studyTypes.label" default="Study Types" />
 		
 	</label>
-	<g:textField name="studyType" value="${primaryStudyInstance?.studyType}"/>
+	
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: primaryStudyInstance, field: 'title', 'error')} ">

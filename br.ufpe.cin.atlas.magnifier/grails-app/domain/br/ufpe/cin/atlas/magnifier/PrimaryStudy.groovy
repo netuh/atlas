@@ -7,6 +7,8 @@ class PrimaryStudy {
 	int year
 	//String studyType
 	String observation
+	
+	//static searchable = true
 
 	static hasMany = [studyTypes: String, authors: String, intituitions : Institution, mechanisms : Mechanism]
 		
