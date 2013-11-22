@@ -1,14 +1,17 @@
 package br.ufpe.cin.atlas.magnifier
 
 class Mechanism {
-	String content
-	String mechanismType
-	Boolean definedByAuthor
-	String domain
-	
-	PrimaryStudy owner
+	String mechanismId
+	String title
+	String venue
+	int year	
+	String observation
 	
 	static constraints = {
-		content size: 1..5000
+		mechanismId size: 1..5000
+		title  nullable: true
+		venue  nullable: true
+		year  nullable: true
+		observation  nullable: true
 	}
 }

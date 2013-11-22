@@ -47,6 +47,7 @@ class BadMechanismController {
 		else
 			specificStudies = avalableStudies.findAll  { (it.getStudyTypes().contains(params.studyType)) }
 		def withMechism = specificStudies.findAll  { !(it.getMechanisms().isEmpty()) }
+		println "size="+withMechism.size()
 		def withGuideline = withMechism.findAll  {it.getMechanisms().find {
 			it.getMechanismType().toLowerCase() == "guideline"}
 		}

@@ -122,11 +122,8 @@
 				</ul>
 				<h2>Mechanism:</h2>
 				<ul>
-					<li class="controller"><g:link controller="mechanism" action="analyseByEmpiricalMethod">Analyses By Empirical Method</g:link></li>
 					<li class="controller"><g:link controller="mechanism" action="analyseByYear">Analyse By Year</g:link></li>
-					<li class="controller"><g:link controller="mechanism" action="analyseByYearNew">Analyse By Year (New Interface)</g:link></li>
-					<li class="controller"><g:link controller="mechanism" action="analyseByQuantity">Analyse By Quantity</g:link></li>
-				</ul>
+					</ul>
 			</div>
 		</div>
 	</body>

@@ -1,6 +1,6 @@
 dataSource {
 	//# Default
-	/*
+	//*
     pooled = true
     driverClassName = "org.h2.Driver"
     username = "sa"
@@ -8,7 +8,7 @@ dataSource {
     //*/
 	
 	//# MySQL
-	//*
+	/*
 	pooled = true
 	driverClassName = "com.mysql.jdbc.Driver"
 	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
@@ -27,7 +27,7 @@ environments {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
 			//# Default
-			/*
+			//*
 			url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			//*/
 			
@@ -39,7 +39,7 @@ environments {
 			//*/
 			
 			//# Cloudbees MySQL
-			//*
+			/*
 			url = "jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/atlas?useUnicode=yes&characterEncoding=UTF-8"
 			username = "netuh"
 			password = "pass1234"
@@ -49,7 +49,7 @@ environments {
     test {
         dataSource {
 			//# Default
-            /*
+            //*
 			dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
 			dbCreate = "update"
@@ -63,7 +63,7 @@ environments {
 			//*/
 			
 			//# Cloudbees MySQL
-			//*
+			/*
 			dbCreate = "update"
 			url = "jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/atlas?useUnicode=yes&characterEncoding=UTF-8"
 			username = "netuh"
@@ -82,7 +82,7 @@ environments {
 			//*/
 			
 			//# Cloudbees MySQL
-			//*
+			/*
 			dbCreate = "update"
 			url = "jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/atlas?useUnicode=yes&characterEncoding=UTF-8"
 			username = "netuh"
@@ -90,7 +90,7 @@ environments {
 			//*/
 			
 			//# Default
-			/*
+			//*
 			dbCreate = "update"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             properties {

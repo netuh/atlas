@@ -23,62 +23,7 @@ class MechanismController {
         respond new Mechanism(params)
     }
 	
-	def analyseByQuantity() {
-		def mechanismByQuantity = [:]
-		def avalableStudies = []
-		
-		if (params.conference != null && params.conference != "All") {
-			PrimaryStudy.findAllByConferenceSource(params.conference).each {
-				avalableStudies.addAll(it.getMechanisms())
-			}
-		} else {
-			avalableStudies = Mechanism.all
-		}
-		
-		avalableStudies.each {
-			def empContent = it.getContent()
-			if (!mechanismByQuantity.containsKey(empContent)){
-				mechanismByQuantity.put(empContent, [it])
-			} else {
-				mechanismByQuantity.get(empContent).add(it)
-			}
-		}
-		def importMechanismByQuantity = [:]
-		mechanismByQuantity.each {
-			if (it.value.size() > 1){
-				importMechanismByQuantity.put(it.key, it.value.size())
-			}
-		}
-		
-		mechanismByQuantity= mechanismByQuantity.sort { it.value.size()}
-		
-		[ list:importMechanismByQuantity,fullList:mechanismByQuantity , conference:params.conference ]
-	}
-	
-	def analyseByEmpiricalMethod() {
-		def mechanismByEmpMethods = [:]
-		def avalableStudies = []
-		
-		if (params.conference != null && params.conference != "All") {
-			PrimaryStudy.findAllByConferenceSource(params.conference).each {
-				avalableStudies.addAll(it.getMechanisms())
-			}
-		} else {
-			avalableStudies = Mechanism.all
-		}
-		
-		avalableStudies.each {
-			def empMethod = it.getOwner().getStudyType()
-			if (!mechanismByEmpMethods.containsKey(empMethod)){
-				mechanismByEmpMethods.put(empMethod, [it])
-			} else {
-				mechanismByEmpMethods.get(empMethod).add(it)
-			}
-		}
-		[ list:mechanismByEmpMethods , conference:params.conference ]
-	}
-	
-	def analyseByYearNew() {
+	def analyseByYear() {
 		def studyByYear = [:]
 		def avalableMechanism = []
 		def primaryStudies = []
@@ -113,30 +58,6 @@ class MechanismController {
 			finalListStudies.add([year:it.key, mech:it.value.size(), total:studiesByYear.size()])
 		}
 		[ list:studyByYear, newList : finalListStudies ]
-	}
-	
-	def analyseByYear() {
-		def mechanismByYear = [:]
-		def avalableMechanism = []
-		
-		if (params.conference != null && params.conference != "All") {
-			PrimaryStudy.findAllByConferenceSource(params.conference).each {
-				avalableMechanism.addAll(it.getMechanisms())
-			}
-		} else {
-			avalableMechanism = Mechanism.all
-		}
-		
-		avalableMechanism.each {
-			def mechYear = it.getOwner().getYear()
-			if (!mechanismByYear.containsKey(mechYear)){
-				mechanismByYear.put(mechYear, [it])
-			} else {
-				mechanismByYear.get(mechYear).add(it)
-			}
-		}
-		mechanismByYear= mechanismByYear.sort { it.key}
-		[ list:mechanismByYear ]
 	}
 
     @Transactional

@@ -10,7 +10,7 @@ class PrimaryStudy {
 	
 	//static searchable = true
 
-	static hasMany = [studyTypes: String, authors: String, intituitions : Institution, mechanisms : Mechanism]
+	static hasMany = [studyTypes: String, authors: String, intituitions : Institution, mechanisms : AssociationMechanism]
 		
 	static constraints = {
 		observation  nullable: true

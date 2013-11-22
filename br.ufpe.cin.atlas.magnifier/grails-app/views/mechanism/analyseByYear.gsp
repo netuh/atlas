@@ -10,9 +10,9 @@
       function drawVisualization() {
         // Some raw data (not necessarily accurate)
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Quantity of Studies']
-          <g:each in="${list}" var="study">
-			,['${study.key}',     ${study.value.size()}]
+          ['Year', 'Quantity of Studies', 'Total']
+          <g:each in="${newList}" var="study">
+			,['${study.year}',     ${study.mech},     ${study.total}]
 		  </g:each>
         ]);
 
@@ -47,7 +47,7 @@
 			<option value="ESEJ">ESEJ</option>
 			<option value="All" selected >All</option>
 		</select>
-		<g:actionSubmit action="analyseByYear"
+		<g:actionSubmit action="analyseByYearNew"
 			value="${message(code: 'default.button.update.label', default: 'Update')}" />
 	</g:form>
 	<div id="chart_div" style="width: 900px; height: 500px;"></div>
@@ -61,7 +61,7 @@
 				<b>${study.key}</b>
 			</dt>
 			<g:each in="${study.value}" var="aStudy">
-				<dd>-${aStudy.getContent()}</dd>
+				<dd>-${aStudy.getTitle()}</dd>
 			</g:each>
 		</g:each>
 	</dl>
