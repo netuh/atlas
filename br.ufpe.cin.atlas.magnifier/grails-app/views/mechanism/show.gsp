@@ -23,38 +23,47 @@
 			</g:if>
 			<ol class="property-list mechanism">
 			
-				<g:if test="${mechanismInstance?.content}">
+				<g:if test="${mechanismInstance?.mechanismId}">
 				<li class="fieldcontain">
-					<span id="content-label" class="property-label"><g:message code="mechanism.content.label" default="Content" /></span>
+					<span id="mechanismId-label" class="property-label"><g:message code="mechanism.mechanismId.label" default="Mechanism Id" /></span>
 					
-						<span class="property-value" aria-labelledby="content-label"><g:fieldValue bean="${mechanismInstance}" field="content"/></span>
+						<span class="property-value" aria-labelledby="mechanismId-label"><g:fieldValue bean="${mechanismInstance}" field="mechanismId"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${mechanismInstance?.definedByAuthor}">
+				<g:if test="${mechanismInstance?.title}">
 				<li class="fieldcontain">
-					<span id="definedByAuthor-label" class="property-label"><g:message code="mechanism.definedByAuthor.label" default="Defined By Author" /></span>
+					<span id="title-label" class="property-label"><g:message code="mechanism.title.label" default="Title" /></span>
 					
-						<span class="property-value" aria-labelledby="definedByAuthor-label"><g:formatBoolean boolean="${mechanismInstance?.definedByAuthor}" /></span>
+						<span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${mechanismInstance}" field="title"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${mechanismInstance?.domain}">
+				<g:if test="${mechanismInstance?.venue}">
 				<li class="fieldcontain">
-					<span id="domain-label" class="property-label"><g:message code="mechanism.domain.label" default="Domain" /></span>
+					<span id="venue-label" class="property-label"><g:message code="mechanism.venue.label" default="Venue" /></span>
 					
-						<span class="property-value" aria-labelledby="domain-label"><g:fieldValue bean="${mechanismInstance}" field="domain"/></span>
+						<span class="property-value" aria-labelledby="venue-label"><g:fieldValue bean="${mechanismInstance}" field="venue"/></span>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${mechanismInstance?.mechanismType}">
+				<g:if test="${mechanismInstance?.year}">
 				<li class="fieldcontain">
-					<span id="mechanismType-label" class="property-label"><g:message code="mechanism.mechanismType.label" default="Mechanism Type" /></span>
+					<span id="year-label" class="property-label"><g:message code="mechanism.year.label" default="Year" /></span>
 					
-						<span class="property-value" aria-labelledby="mechanismType-label"><g:fieldValue bean="${mechanismInstance}" field="mechanismType"/></span>
+						<span class="property-value" aria-labelledby="year-label"><g:fieldValue bean="${mechanismInstance}" field="year"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${mechanismInstance?.observation}">
+				<li class="fieldcontain">
+					<span id="observation-label" class="property-label"><g:message code="mechanism.observation.label" default="Observation" /></span>
+					
+						<span class="property-value" aria-labelledby="observation-label"><g:fieldValue bean="${mechanismInstance}" field="observation"/></span>
 					
 				</li>
 				</g:if>

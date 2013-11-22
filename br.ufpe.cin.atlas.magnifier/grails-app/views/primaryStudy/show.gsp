@@ -37,7 +37,7 @@
 					<span id="mechanisms-label" class="property-label"><g:message code="primaryStudy.mechanisms.label" default="Mechanisms" /></span>
 					
 						<g:each in="${primaryStudyInstance.mechanisms}" var="m">
-						<span class="property-value" aria-labelledby="mechanisms-label"><g:link controller="mechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="mechanisms-label"><g:link controller="associationMechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

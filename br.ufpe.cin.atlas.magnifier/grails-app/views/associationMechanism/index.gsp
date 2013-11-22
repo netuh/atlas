@@ -24,11 +24,11 @@
 			<thead>
 					<tr>
 					
+						<th><g:message code="associationMechanism.mechanism.label" default="Mechanism" /></th>
+					
 						<g:sortableColumn property="definedByAuthor" title="${message(code: 'associationMechanism.definedByAuthor.label', default: 'Defined By Author')}" />
 					
 						<g:sortableColumn property="domain" title="${message(code: 'associationMechanism.domain.label', default: 'Domain')}" />
-					
-						<th><g:message code="associationMechanism.mechanism.label" default="Mechanism" /></th>
 					
 						<g:sortableColumn property="mechanismType" title="${message(code: 'associationMechanism.mechanismType.label', default: 'Mechanism Type')}" />
 					
@@ -40,11 +40,11 @@
 				<g:each in="${associationMechanismInstanceList}" status="i" var="associationMechanismInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${associationMechanismInstance.id}">${fieldValue(bean: associationMechanismInstance, field: "definedByAuthor")}</g:link></td>
+						<td><g:link action="show" id="${associationMechanismInstance.id}">${fieldValue(bean: associationMechanismInstance, field: "mechanism")}</g:link></td>
 					
 						<td>${fieldValue(bean: associationMechanismInstance, field: "domain")}</td>
 					
-						<td>${fieldValue(bean: associationMechanismInstance, field: "mechanism")}</td>
+						<td>${fieldValue(bean: associationMechanismInstance, field: "definedByAuthor")}</td>
 					
 						<td>${fieldValue(bean: associationMechanismInstance, field: "mechanismType")}</td>
 					

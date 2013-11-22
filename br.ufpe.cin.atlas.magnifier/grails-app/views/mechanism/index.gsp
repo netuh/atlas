@@ -24,13 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="content" title="${message(code: 'mechanism.content.label', default: 'Content')}" />
+						<g:sortableColumn property="mechanismId" title="${message(code: 'mechanism.mechanismId.label', default: 'Mechanism Id')}" />
 					
-						<g:sortableColumn property="definedByAuthor" title="${message(code: 'mechanism.definedByAuthor.label', default: 'Defined By Author')}" />
+						<g:sortableColumn property="title" title="${message(code: 'mechanism.title.label', default: 'Title')}" />
 					
-						<g:sortableColumn property="domain" title="${message(code: 'mechanism.domain.label', default: 'Domain')}" />
+						<g:sortableColumn property="venue" title="${message(code: 'mechanism.venue.label', default: 'Venue')}" />
 					
-						<g:sortableColumn property="mechanismType" title="${message(code: 'mechanism.mechanismType.label', default: 'Mechanism Type')}" />
+						<g:sortableColumn property="year" title="${message(code: 'mechanism.year.label', default: 'Year')}" />
+					
+						<g:sortableColumn property="observation" title="${message(code: 'mechanism.observation.label', default: 'Observation')}" />
 					
 					</tr>
 				</thead>
@@ -38,13 +40,15 @@
 				<g:each in="${mechanismInstanceList}" status="i" var="mechanismInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${mechanismInstance.id}">${fieldValue(bean: mechanismInstance, field: "content")}</g:link></td>
+						<td><g:link action="show" id="${mechanismInstance.id}">${fieldValue(bean: mechanismInstance, field: "mechanismId")}</g:link></td>
 					
-						<td><g:formatBoolean boolean="${mechanismInstance.definedByAuthor}" /></td>
+						<td>${fieldValue(bean: mechanismInstance, field: "title")}</td>
 					
-						<td>${fieldValue(bean: mechanismInstance, field: "domain")}</td>
+						<td>${fieldValue(bean: mechanismInstance, field: "venue")}</td>
 					
-						<td>${fieldValue(bean: mechanismInstance, field: "mechanismType")}</td>
+						<td>${fieldValue(bean: mechanismInstance, field: "year")}</td>
+					
+						<td>${fieldValue(bean: mechanismInstance, field: "observation")}</td>
 					
 					</tr>
 				</g:each>

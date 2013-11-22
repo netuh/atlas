@@ -18,10 +18,10 @@
 	
 <ul class="one-to-many">
 <g:each in="${primaryStudyInstance?.mechanisms?}" var="m">
-    <li><g:link controller="mechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="associationMechanism" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="mechanism" action="create" params="['primaryStudy.id': primaryStudyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'mechanism.label', default: 'Mechanism')])}</g:link>
+<g:link controller="associationMechanism" action="create" params="['primaryStudy.id': primaryStudyInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'associationMechanism.label', default: 'AssociationMechanism')])}</g:link>
 </li>
 </ul>
 

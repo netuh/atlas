@@ -2,35 +2,43 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'content', 'error')} ">
-	<label for="content">
-		<g:message code="mechanism.content.label" default="Content" />
+<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'mechanismId', 'error')} ">
+	<label for="mechanismId">
+		<g:message code="mechanism.mechanismId.label" default="Mechanism Id" />
 		
 	</label>
-	<g:textField name="content" value="${mechanismInstance?.content}"/>
+	<g:textArea name="mechanismId" cols="40" rows="5" maxlength="5000" value="${mechanismInstance?.mechanismId}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'definedByAuthor', 'error')} ">
-	<label for="definedByAuthor">
-		<g:message code="mechanism.definedByAuthor.label" default="Defined By Author" />
+<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'title', 'error')} ">
+	<label for="title">
+		<g:message code="mechanism.title.label" default="Title" />
 		
 	</label>
-	<g:checkBox name="definedByAuthor" value="${mechanismInstance?.definedByAuthor}" />
+	<g:textField name="title" value="${mechanismInstance?.title}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'domain', 'error')} ">
-	<label for="domain">
-		<g:message code="mechanism.domain.label" default="Domain" />
+<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'venue', 'error')} ">
+	<label for="venue">
+		<g:message code="mechanism.venue.label" default="Venue" />
 		
 	</label>
-	<g:textField name="domain" value="${mechanismInstance?.domain}"/>
+	<g:textField name="venue" value="${mechanismInstance?.venue}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'mechanismType', 'error')} ">
-	<label for="mechanismType">
-		<g:message code="mechanism.mechanismType.label" default="Mechanism Type" />
+<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'year', 'error')} required">
+	<label for="year">
+		<g:message code="mechanism.year.label" default="Year" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field name="year" type="number" value="${mechanismInstance.year}" required=""/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: mechanismInstance, field: 'observation', 'error')} ">
+	<label for="observation">
+		<g:message code="mechanism.observation.label" default="Observation" />
 		
 	</label>
-	<g:textField name="mechanismType" value="${mechanismInstance?.mechanismType}"/>
+	<g:textField name="observation" value="${mechanismInstance?.observation}"/>
 </div>
 

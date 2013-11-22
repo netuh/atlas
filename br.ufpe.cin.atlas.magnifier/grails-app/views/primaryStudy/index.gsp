@@ -43,11 +43,11 @@
 						<td><g:link action="show" id="${primaryStudyInstance.id}">${fieldValue(bean: primaryStudyInstance, field: "studyId")}</g:link></td>
 					
 						<td>${fieldValue(bean: primaryStudyInstance, field: "conferenceSource")}</td>
-					
-						<td>${fieldValue(bean: primaryStudyInstance, field: "year")}</td>
-					
+
 						<td>${fieldValue(bean: primaryStudyInstance, field: "title")}</td>
 					
+						<td>${fieldValue(bean: primaryStudyInstance, field: "year")}</td>
+						
 						<td>${fieldValue(bean: primaryStudyInstance, field: "observation")}</td>
 					
 					</tr>

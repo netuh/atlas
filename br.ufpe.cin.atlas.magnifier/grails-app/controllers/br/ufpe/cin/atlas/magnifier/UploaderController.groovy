@@ -8,7 +8,7 @@ class UploaderController {
 		println "test"
 	}
 	
-	def upload() {
+	def uploadPrimaryStudy() {
 		println "test2"
 		def f = request.getFile('myFile')
 	    if (f.empty) {

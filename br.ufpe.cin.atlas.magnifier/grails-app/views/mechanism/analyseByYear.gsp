@@ -47,7 +47,7 @@
 			<option value="ESEJ">ESEJ</option>
 			<option value="All" selected >All</option>
 		</select>
-		<g:actionSubmit action="analyseByYearNew"
+		<g:actionSubmit action="analyseByYear"
 			value="${message(code: 'default.button.update.label', default: 'Update')}" />
 	</g:form>
 	<div id="chart_div" style="width: 900px; height: 500px;"></div>

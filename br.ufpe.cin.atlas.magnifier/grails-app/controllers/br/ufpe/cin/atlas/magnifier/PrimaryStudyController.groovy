@@ -22,58 +22,6 @@ class PrimaryStudyController {
     def create() {
         respond new PrimaryStudy(params)
     }
-	
-	def analysesByYear(){
-		def mapStudyType2Study = [:]
-		def studiesMapByYear = [:]
-		def avalableStudies
-		
-		if (params.conference != null && params.conference != "All") {
-			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
-		} else {
-			avalableStudies = PrimaryStudy.all
-		}
-		
-		avalableStudies.each {
-			if (!mapStudyType2Study.containsKey(it.getStudyType())){
-				mapStudyType2Study.put(it.getStudyType(), [it])
-			} else {
-				mapStudyType2Study.get(it.getStudyType()).add(it)
-			}
-		}
-		mapStudyType2Study.each { studyType, studies ->
-			def mapYear2Study = [:]
-			studies.each {
-				if (!mapYear2Study.containsKey(it.getYear())){
-					mapYear2Study.put(it.getYear(), [it])
-				} else {
-					mapYear2Study.get(it.getYear()).add(it)
-				}
-			}
-			mapYear2Study= mapYear2Study.sort { it.key}
-			studiesMapByYear.put(studyType, mapYear2Study)
-		}
-		[ list:studiesMapByYear, conference:params.conference ]
-	}
-	
-	def empiricalStudies() {
-		def studiesMap = [:]
-		def avalableStudies
-		if (params.conference != null && params.conference != "All") {
-			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
-		} else {
-			avalableStudies = PrimaryStudy.all
-		}
-		
-		avalableStudies.each {
-			if (!studiesMap.containsKey(it.getStudyType())){
-				studiesMap.put(it.getStudyType(), [it])
-			} else {
-				studiesMap.get(it.getStudyType()).add(it)
-			}
-		}
-        [ list:studiesMap , conference:params.conference ]
-	}
 
     @Transactional
     def save(PrimaryStudy primaryStudyInstance) {
@@ -153,4 +101,56 @@ class PrimaryStudyController {
             '*'{ render status: NOT_FOUND }
         }
     }
+//Not Default	
+	def analysesByYear(){
+		def mapStudyType2Study = [:]
+		def studiesMapByYear = [:]
+		def avalableStudies
+		
+		if (params.conference != null && params.conference != "All") {
+			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
+		} else {
+			avalableStudies = PrimaryStudy.all
+		}
+		
+		avalableStudies.each {
+			if (!mapStudyType2Study.containsKey(it.getStudyType())){
+				mapStudyType2Study.put(it.getStudyType(), [it])
+			} else {
+				mapStudyType2Study.get(it.getStudyType()).add(it)
+			}
+		}
+		mapStudyType2Study.each { studyType, studies ->
+			def mapYear2Study = [:]
+			studies.each {
+				if (!mapYear2Study.containsKey(it.getYear())){
+					mapYear2Study.put(it.getYear(), [it])
+				} else {
+					mapYear2Study.get(it.getYear()).add(it)
+				}
+			}
+			mapYear2Study= mapYear2Study.sort { it.key}
+			studiesMapByYear.put(studyType, mapYear2Study)
+		}
+		[ list:studiesMapByYear, conference:params.conference ]
+	}
+	
+	def empiricalStudies() {
+		def studiesMap = [:]
+		def avalableStudies
+		if (params.conference != null && params.conference != "All") {
+			avalableStudies = PrimaryStudy.findAllByConferenceSource(params.conference)
+		} else {
+			avalableStudies = PrimaryStudy.all
+		}
+		
+		avalableStudies.each {
+			if (!studiesMap.containsKey(it.getStudyType())){
+				studiesMap.put(it.getStudyType(), [it])
+			} else {
+				studiesMap.get(it.getStudyType()).add(it)
+			}
+		}
+		[ list:studiesMap , conference:params.conference ]
+	}
 }
