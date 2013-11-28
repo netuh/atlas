@@ -6,11 +6,12 @@ class AssociationMechanism {
 	Boolean definedByAuthor
 	String domain
 	
-	Mechanism mechanism
+	UsedMechanism mechanism
 	
 	PrimaryStudy owner
 	
 	static constraints = {
 		//mechanismId size: 1..5000
+		//mechanism lazy:false
 	}
 }

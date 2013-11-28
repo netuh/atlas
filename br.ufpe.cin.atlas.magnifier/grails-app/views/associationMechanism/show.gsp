@@ -23,6 +23,15 @@
 			</g:if>
 			<ol class="property-list associationMechanism">
 			
+				<g:if test="${associationMechanismInstance?.mechanism}">
+				<li class="fieldcontain">
+					<span id="mechanism-label" class="property-label"><g:message code="associationMechanism.mechanism.label" default="Mechanism" /></span>
+					
+						<span class="property-value" aria-labelledby="mechanism-label"><g:link controller="usedMechanism" action="show" id="${associationMechanismInstance?.mechanism?.id}">${associationMechanismInstance?.mechanism?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${associationMechanismInstance?.definedByAuthor}">
 				<li class="fieldcontain">
 					<span id="definedByAuthor-label" class="property-label"><g:message code="associationMechanism.definedByAuthor.label" default="Defined By Author" /></span>
@@ -37,15 +46,6 @@
 					<span id="domain-label" class="property-label"><g:message code="associationMechanism.domain.label" default="Domain" /></span>
 					
 						<span class="property-value" aria-labelledby="domain-label"><g:fieldValue bean="${associationMechanismInstance}" field="domain"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${associationMechanismInstance?.mechanism}">
-				<li class="fieldcontain">
-					<span id="mechanism-label" class="property-label"><g:message code="associationMechanism.mechanism.label" default="Mechanism" /></span>
-					
-						<span class="property-value" aria-labelledby="mechanism-label"><g:link controller="mechanism" action="show" id="${associationMechanismInstance?.mechanism?.id}">${associationMechanismInstance?.mechanism?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

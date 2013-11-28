@@ -1,6 +1,3 @@
-import br.ufpe.cin.atlas.magnifier.Mechanism
-import br.ufpe.cin.atlas.magnifier.PrimaryStudy
-import excel.PrimaryStudyExcelImporter
 
 class BootStrap {
 

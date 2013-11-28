@@ -91,7 +91,7 @@ environments {
 			
 			//# Default
 			//*
-			dbCreate = "update"
+			dbCreate = "create-drop"
             url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
             properties {
                maxActive = -1

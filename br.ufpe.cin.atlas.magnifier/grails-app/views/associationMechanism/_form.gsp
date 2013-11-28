@@ -2,6 +2,14 @@
 
 
 
+<div class="fieldcontain ${hasErrors(bean: associationMechanismInstance, field: 'mechanism', 'error')} required">
+	<label for="mechanism">
+		<g:message code="associationMechanism.mechanism.label" default="Mechanism" />
+		<span class="required-indicator">*</span>
+	</label>
+	
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: associationMechanismInstance, field: 'definedByAuthor', 'error')} ">
 	<label for="definedByAuthor">
 		<g:message code="associationMechanism.definedByAuthor.label" default="Defined By Author" />
@@ -16,14 +24,6 @@
 		
 	</label>
 	<g:textField name="domain" value="${associationMechanismInstance?.domain}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: associationMechanismInstance, field: 'mechanism', 'error')} required">
-	<label for="mechanism">
-		<g:message code="associationMechanism.mechanism.label" default="Mechanism" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="mechanism" name="mechanism.id" from="${br.ufpe.cin.atlas.magnifier.Mechanism.list()}" optionKey="id" required="" value="${associationMechanismInstance?.mechanism?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: associationMechanismInstance, field: 'mechanismType', 'error')} ">

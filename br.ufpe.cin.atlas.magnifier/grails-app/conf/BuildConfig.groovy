@@ -27,7 +27,6 @@ grails.project.dependency.resolution = {
     inherits("global") {
         // specify dependency exclusions here; for example, uncomment this to disable ehcache:
         // excludes 'ehcache'
-		excludes 'log4j', 'jcl-over-slf4j', 'slf4j-api', 'slf4j-log4j12'
     }
     log "error" // log level of Ivy resolver, either 'error', 'warn', 'info', 'debug' or 'verbose'
     checksums true // Whether to verify checksums on resolve
@@ -78,19 +77,3 @@ grails.project.dependency.resolution = {
 
 // All libs
 grails.project.war.file = "atlas-prod.war"
-
-/*
-def deps = [
-	"poi-3.9-20121203.jar" ]
-grails.war.dependencies = {
-	fileset(dir: "lib") {
-		for (pattern in deps) {
-			include(name: pattern)
-		}
-	}
-}*/
-
-grails.war.resources = { stagingDir, args ->
-	copy(file: "data/PlanilhaFinal_Atlas_V5.xlsx",
-		 tofile: "${stagingDir}/data/PlanilhaFinal_Atlas_V5.xlsx")
-}

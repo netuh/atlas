@@ -52,13 +52,15 @@ expressionOut.print(flash.message)
 printHtmlPart(11)
 }
 printHtmlPart(12)
-invokeTag('sortableColumn','g',27,['property':("content"),'title':(message(code: 'mechanism.content.label', default: 'Content'))],-1)
+invokeTag('sortableColumn','g',27,['property':("mechanismId"),'title':(message(code: 'mechanism.mechanismId.label', default: 'Mechanism Id'))],-1)
 printHtmlPart(13)
-invokeTag('sortableColumn','g',29,['property':("definedByAuthor"),'title':(message(code: 'mechanism.definedByAuthor.label', default: 'Defined By Author'))],-1)
+invokeTag('sortableColumn','g',29,['property':("title"),'title':(message(code: 'mechanism.title.label', default: 'Title'))],-1)
 printHtmlPart(13)
-invokeTag('sortableColumn','g',31,['property':("domain"),'title':(message(code: 'mechanism.domain.label', default: 'Domain'))],-1)
+invokeTag('sortableColumn','g',31,['property':("venue"),'title':(message(code: 'mechanism.venue.label', default: 'Venue'))],-1)
 printHtmlPart(13)
-invokeTag('sortableColumn','g',33,['property':("mechanismType"),'title':(message(code: 'mechanism.mechanismType.label', default: 'Mechanism Type'))],-1)
+invokeTag('sortableColumn','g',33,['property':("year"),'title':(message(code: 'mechanism.year.label', default: 'Year'))],-1)
+printHtmlPart(13)
+invokeTag('sortableColumn','g',35,['property':("observation"),'title':(message(code: 'mechanism.observation.label', default: 'Observation'))],-1)
 printHtmlPart(14)
 loop:{
 int i = 0
@@ -67,24 +69,26 @@ printHtmlPart(15)
 expressionOut.print((i % 2) == 0 ? 'even' : 'odd')
 printHtmlPart(16)
 createTagBody(3, {->
-expressionOut.print(fieldValue(bean: mechanismInstance, field: "content"))
+expressionOut.print(fieldValue(bean: mechanismInstance, field: "mechanismId"))
 })
-invokeTag('link','g',41,['action':("show"),'id':(mechanismInstance.id)],3)
+invokeTag('link','g',43,['action':("show"),'id':(mechanismInstance.id)],3)
 printHtmlPart(17)
-invokeTag('formatBoolean','g',43,['boolean':(mechanismInstance.definedByAuthor)],-1)
+expressionOut.print(fieldValue(bean: mechanismInstance, field: "title"))
 printHtmlPart(17)
-expressionOut.print(fieldValue(bean: mechanismInstance, field: "domain"))
+expressionOut.print(fieldValue(bean: mechanismInstance, field: "venue"))
 printHtmlPart(17)
-expressionOut.print(fieldValue(bean: mechanismInstance, field: "mechanismType"))
+expressionOut.print(fieldValue(bean: mechanismInstance, field: "year"))
+printHtmlPart(17)
+expressionOut.print(fieldValue(bean: mechanismInstance, field: "observation"))
 printHtmlPart(18)
 i++
 }
 }
 printHtmlPart(19)
-invokeTag('paginate','g',54,['total':(mechanismInstanceCount ?: 0)],-1)
+invokeTag('paginate','g',58,['total':(mechanismInstanceCount ?: 0)],-1)
 printHtmlPart(20)
 })
-invokeTag('captureBody','sitemesh',57,[:],1)
+invokeTag('captureBody','sitemesh',61,[:],1)
 printHtmlPart(21)
 }
 public static final Map JSP_TAGS = new HashMap()
@@ -92,7 +96,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1383771407000L
+public static final long LAST_MODIFIED = 1385151944000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

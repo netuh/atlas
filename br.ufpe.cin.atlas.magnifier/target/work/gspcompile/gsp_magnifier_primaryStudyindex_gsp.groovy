@@ -74,29 +74,29 @@ expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "studyId"))
 invokeTag('link','g',43,['action':("show"),'id':(primaryStudyInstance.id)],3)
 printHtmlPart(18)
 expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "conferenceSource"))
-printHtmlPart(18)
-expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "year"))
-printHtmlPart(18)
+printHtmlPart(19)
 expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "title"))
 printHtmlPart(18)
+expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "year"))
+printHtmlPart(20)
 expressionOut.print(fieldValue(bean: primaryStudyInstance, field: "observation"))
-printHtmlPart(19)
+printHtmlPart(21)
 i++
 }
 }
-printHtmlPart(20)
+printHtmlPart(22)
 invokeTag('paginate','g',58,['total':(primaryStudyInstanceCount ?: 0)],-1)
-printHtmlPart(21)
+printHtmlPart(23)
 })
 invokeTag('captureBody','sitemesh',61,[:],1)
-printHtmlPart(22)
+printHtmlPart(24)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1384876714000L
+public static final long LAST_MODIFIED = 1385152694000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

@@ -57,60 +57,68 @@ expressionOut.print(flash.message)
 printHtmlPart(12)
 }
 printHtmlPart(13)
-if(true && (mechanismInstance?.content)) {
+if(true && (mechanismInstance?.mechanismId)) {
 printHtmlPart(14)
-invokeTag('message','g',28,['code':("mechanism.content.label"),'default':("Content")],-1)
+invokeTag('message','g',28,['code':("mechanism.mechanismId.label"),'default':("Mechanism Id")],-1)
 printHtmlPart(15)
-invokeTag('fieldValue','g',30,['bean':(mechanismInstance),'field':("content")],-1)
+invokeTag('fieldValue','g',30,['bean':(mechanismInstance),'field':("mechanismId")],-1)
 printHtmlPart(16)
 }
 printHtmlPart(17)
-if(true && (mechanismInstance?.definedByAuthor)) {
+if(true && (mechanismInstance?.title)) {
 printHtmlPart(18)
-invokeTag('message','g',37,['code':("mechanism.definedByAuthor.label"),'default':("Defined By Author")],-1)
+invokeTag('message','g',37,['code':("mechanism.title.label"),'default':("Title")],-1)
 printHtmlPart(19)
-invokeTag('formatBoolean','g',39,['boolean':(mechanismInstance?.definedByAuthor)],-1)
+invokeTag('fieldValue','g',39,['bean':(mechanismInstance),'field':("title")],-1)
 printHtmlPart(16)
 }
 printHtmlPart(17)
-if(true && (mechanismInstance?.domain)) {
+if(true && (mechanismInstance?.venue)) {
 printHtmlPart(20)
-invokeTag('message','g',46,['code':("mechanism.domain.label"),'default':("Domain")],-1)
+invokeTag('message','g',46,['code':("mechanism.venue.label"),'default':("Venue")],-1)
 printHtmlPart(21)
-invokeTag('fieldValue','g',48,['bean':(mechanismInstance),'field':("domain")],-1)
+invokeTag('fieldValue','g',48,['bean':(mechanismInstance),'field':("venue")],-1)
 printHtmlPart(16)
 }
 printHtmlPart(17)
-if(true && (mechanismInstance?.mechanismType)) {
+if(true && (mechanismInstance?.year)) {
 printHtmlPart(22)
-invokeTag('message','g',55,['code':("mechanism.mechanismType.label"),'default':("Mechanism Type")],-1)
+invokeTag('message','g',55,['code':("mechanism.year.label"),'default':("Year")],-1)
 printHtmlPart(23)
-invokeTag('fieldValue','g',57,['bean':(mechanismInstance),'field':("mechanismType")],-1)
+invokeTag('fieldValue','g',57,['bean':(mechanismInstance),'field':("year")],-1)
 printHtmlPart(16)
 }
+printHtmlPart(17)
+if(true && (mechanismInstance?.observation)) {
 printHtmlPart(24)
-createTagBody(2, {->
+invokeTag('message','g',64,['code':("mechanism.observation.label"),'default':("Observation")],-1)
 printHtmlPart(25)
-createTagBody(3, {->
-invokeTag('message','g',65,['code':("default.button.edit.label"),'default':("Edit")],-1)
-})
-invokeTag('link','g',65,['class':("edit"),'action':("edit"),'resource':(mechanismInstance)],3)
+invokeTag('fieldValue','g',66,['bean':(mechanismInstance),'field':("observation")],-1)
+printHtmlPart(16)
+}
 printHtmlPart(26)
-invokeTag('actionSubmit','g',66,['class':("delete"),'action':("delete"),'value':(message(code: 'default.button.delete.label', default: 'Delete')),'onclick':("return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');")],-1)
+createTagBody(2, {->
 printHtmlPart(27)
+createTagBody(3, {->
+invokeTag('message','g',74,['code':("default.button.edit.label"),'default':("Edit")],-1)
 })
-invokeTag('form','g',68,['url':([resource:mechanismInstance, action:'delete']),'method':("DELETE")],2)
+invokeTag('link','g',74,['class':("edit"),'action':("edit"),'resource':(mechanismInstance)],3)
 printHtmlPart(28)
-})
-invokeTag('captureBody','sitemesh',70,[:],1)
+invokeTag('actionSubmit','g',75,['class':("delete"),'action':("delete"),'value':(message(code: 'default.button.delete.label', default: 'Delete')),'onclick':("return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');")],-1)
 printHtmlPart(29)
+})
+invokeTag('form','g',77,['url':([resource:mechanismInstance, action:'delete']),'method':("DELETE")],2)
+printHtmlPart(30)
+})
+invokeTag('captureBody','sitemesh',79,[:],1)
+printHtmlPart(31)
 }
 public static final Map JSP_TAGS = new HashMap()
 protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1383771407000L
+public static final long LAST_MODIFIED = 1385151949000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

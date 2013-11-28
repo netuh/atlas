@@ -28,14 +28,14 @@ printHtmlPart(6)
 createTagBody(2, {->
 expressionOut.print(m?.encodeAsHTML())
 })
-invokeTag('link','g',21,['controller':("mechanism"),'action':("show"),'id':(m.id)],2)
+invokeTag('link','g',21,['controller':("associationMechanism"),'action':("show"),'id':(m.id)],2)
 printHtmlPart(7)
 }
 printHtmlPart(8)
 createTagBody(1, {->
-expressionOut.print(message(code: 'default.add.label', args: [message(code: 'mechanism.label', default: 'Mechanism')]))
+expressionOut.print(message(code: 'default.add.label', args: [message(code: 'associationMechanism.label', default: 'AssociationMechanism')]))
 })
-invokeTag('link','g',24,['controller':("mechanism"),'action':("create"),'params':(['primaryStudy.id': primaryStudyInstance?.id])],1)
+invokeTag('link','g',24,['controller':("associationMechanism"),'action':("create"),'params':(['primaryStudy.id': primaryStudyInstance?.id])],1)
 printHtmlPart(9)
 expressionOut.print(hasErrors(bean: primaryStudyInstance, field: 'authors', 'error'))
 printHtmlPart(10)
@@ -81,7 +81,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1384282402000L
+public static final long LAST_MODIFIED = 1385152033000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

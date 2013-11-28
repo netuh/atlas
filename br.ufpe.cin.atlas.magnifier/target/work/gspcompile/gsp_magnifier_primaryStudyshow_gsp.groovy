@@ -74,7 +74,7 @@ printHtmlPart(20)
 createTagBody(4, {->
 expressionOut.print(m?.encodeAsHTML())
 })
-invokeTag('link','g',40,['controller':("mechanism"),'action':("show"),'id':(m.id)],4)
+invokeTag('link','g',40,['controller':("associationMechanism"),'action':("show"),'id':(m.id)],4)
 printHtmlPart(21)
 }
 printHtmlPart(22)
@@ -164,7 +164,7 @@ protected void init() {
 	this.jspTags = JSP_TAGS
 }
 public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
-public static final long LAST_MODIFIED = 1384282402000L
+public static final long LAST_MODIFIED = 1385152033000L
 public static final String EXPRESSION_CODEC = 'html'
 public static final String STATIC_CODEC = 'none'
 public static final String OUT_CODEC = 'html'

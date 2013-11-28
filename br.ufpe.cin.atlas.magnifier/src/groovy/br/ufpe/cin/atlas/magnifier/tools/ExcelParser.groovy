@@ -1,12 +1,14 @@
 package br.ufpe.cin.atlas.magnifier.tools
 
 import br.ufpe.cin.atlas.magnifier.AssociationMechanism
-import br.ufpe.cin.atlas.magnifier.Mechanism
 import br.ufpe.cin.atlas.magnifier.PrimaryStudy
+import br.ufpe.cin.atlas.magnifier.UsedMechanism
+import excel.MechanismExcelImporter
 import excel.PrimaryStudyExcelImporter
 
 class ExcelParser {
 	
+	/*
 	def parsePrimaryStudies (String filePath){
 		def importer = new PrimaryStudyExcelImporter (filePath)
 		
@@ -41,7 +43,6 @@ class ExcelParser {
 					//}
 					primaryStudies.put(key,currentPrimaryStudy)
 				}
-				/*
 				if (it["mechRef"] != null && it["mechRef"] != "No mechanisms;" && it["mechRef"] != "No mechanism;") {
 					def newMechanism = new Mechanism()
 					newMechanism.setContent(it["mechRef"].replaceAll( /[^0-9a-zA-Z\\,\\.\\(\\):-\\'\\" ]/, '' ))
@@ -52,11 +53,12 @@ class ExcelParser {
 					currentPrimaryStudy.addToMechanisms(newMechanism)
 					currentPrimaryStudy.save(flush:true)
 				}
-				//*/
 				
 			}
 		}
 	}
+	//*/
+
 	
 	def parsePrimaryStudies2 (String filePath){
 		def importer = new PrimaryStudyExcelImporter (filePath)
@@ -79,7 +81,7 @@ class ExcelParser {
 				currentPrimaryStudy?.studyTypes?.clear()
 				it["empiricalStudy"].split(";").each {
 					if (it)
-						currentPrimaryStudy.addToStudyTypes(it.toLowerCase())
+						currentPrimaryStudy.addToStudyTypes(it.toLowerCase().trim())
 				}
 			}
 			
@@ -88,15 +90,15 @@ class ExcelParser {
 			if (it["authors"]) {
 				currentPrimaryStudy?.authors?.clear()
 				it["authors"].split(";").each { authorName ->
-					currentPrimaryStudy.addToAuthors(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ))
+					currentPrimaryStudy.addToAuthors(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ).toLowerCase().trim())
 				}
 			}
 			currentPrimaryStudy.save(flush:true)
 			if (it["mechRef"] != null && it["mechRef"] != "No mechanisms;" && it["mechRef"] != "No mechanism;") {
 				def mechRef = it["mechRef"].replaceAll( /[^0-9a-zA-Z\\,\\.\\(\\):-\\'\\" ]/, '' )
-				def newMechanism = Mechanism.findByMechanismId(mechRef)
+				def newMechanism = UsedMechanism.findByMechanismId(mechRef)
 				if (!newMechanism){
-					newMechanism = new Mechanism()
+					newMechanism = new UsedMechanism()
 					println "mechRef="+mechRef
 					newMechanism.setMechanismId(mechRef)
 					newMechanism.save(failOnError: true)
@@ -118,4 +120,35 @@ class ExcelParser {
 			}
 		}
 	}
+
+	def parseMechanisms (String filePath){
+		def importer = new MechanismExcelImporter (filePath)
+		
+		importer.getBooks().each {
+			def key = it["id"]
+			def currentMechanism = UsedMechanism.findByMechanismId(key)
+			if (!currentMechanism)
+				currentMechanism = new UsedMechanism()
+			if (it["id"])
+				currentMechanism.setMechanismId(it["id"])
+			if (it["title"])
+				currentMechanism.setTitle(it["title"])
+			if (it["year"])
+				currentMechanism.setYear(it["year"].toInteger())
+
+			if (it["authors"]) {
+				currentMechanism?.authors?.clear()
+				it["authors"].split(";").each { authorName ->
+					currentMechanism.addToAuthors(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ))
+				}
+			}
+			if (it["source"])
+				currentMechanism.setConferenceSource(it["source"])
+			if (it["information"])
+				currentMechanism.setAdditionalInformation(it["information"])
+		
+			currentMechanism.save(flush:true)
+		}
+	}
+	//*/
 }
