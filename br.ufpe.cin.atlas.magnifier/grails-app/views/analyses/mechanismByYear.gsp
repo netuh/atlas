@@ -10,7 +10,7 @@
       function drawVisualization() {
         // Some raw data (not necessarily accurate)
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Quantity of Studies', 'Total']
+          ['Year', 'Studies with support mechanism', 'Total of studies']
           <g:each in="${newList}" var="study">
                         ,['${study.year}',     ${study.mech},     ${study.total}]
                   </g:each>

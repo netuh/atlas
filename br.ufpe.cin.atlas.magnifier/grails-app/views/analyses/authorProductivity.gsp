@@ -7,14 +7,14 @@
 	      google.setOnLoadCallback(drawChart);
 	      function drawChart() {
 	        var data = google.visualization.arrayToDataTable([
-                ['Study Type', 'Number of Primary Studies']
+                ['Author', 'Number of Primary Studies']
 			<g:each in="${relevant}" var="mech">
 				,['${mech.key}',     ${mech.value.size()}]
 			</g:each>
 	        ]);
 	
 	        var options = {
-	          title: 'Primary Studies by Study Type'
+	          title: 'Number of Publications'
 	        };
 	
 	        var chart = new google.visualization.ColumnChart(document.getElementById('piechart2'));

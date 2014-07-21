@@ -8,63 +8,13 @@ import excel.PrimaryStudyExcelImporter
 
 class ExcelParser {
 	
-	/*
-	def parsePrimaryStudies (String filePath){
-		def importer = new PrimaryStudyExcelImporter (filePath)
-		
-		def primaryStudies = [:]
-		importer.getBooks().each() {
-			if (it["include"] == 'yes') {
-				def key = it["id"]
-				def currentPrimaryStudy = primaryStudies[key]
-				if (currentPrimaryStudy == null) {
-					currentPrimaryStudy = new PrimaryStudy()
-					currentPrimaryStudy.setStudyId(it["id"])
-					currentPrimaryStudy.setTitle(it["title"])
-					currentPrimaryStudy.setConferenceSource(it["source"])
-					println "Id="+ it["id"]
-					println "source="+ it["source"]
-					currentPrimaryStudy.setYear(it["year"] == null ? 0 : it["year"].toInteger())
-					
-					it["empiricalStudy"].split(";").each {
-						if (it)
-							currentPrimaryStudy.addToStudyTypes(it.toLowerCase())
-					}
-					//currentPrimaryStudy.setStudyType(it["empiricalStudy"].toLowerCase().replaceAll(";", ""))
-					currentPrimaryStudy.setObservation(it["obs"])
-					it["authors"].split(";").each { authorName ->
-						currentPrimaryStudy.addToAuthors(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ))
-					}
-					currentPrimaryStudy.save(failOnError: true)
-					//it["institution"].split(";").each { institutionNames ->
-					//	def newInstitution = new Institution()
-					//	newInstitution.setName(institutionNames)
-					//	currentPrimaryStudy.addToIntituitions(newInstitution)
-					//}
-					primaryStudies.put(key,currentPrimaryStudy)
-				}
-				if (it["mechRef"] != null && it["mechRef"] != "No mechanisms;" && it["mechRef"] != "No mechanism;") {
-					def newMechanism = new Mechanism()
-					newMechanism.setContent(it["mechRef"].replaceAll( /[^0-9a-zA-Z\\,\\.\\(\\):-\\'\\" ]/, '' ))
-					newMechanism.setMechanismType(it["mechType"] == null ? "No Mechanism Type" : it["mechType"])
-					newMechanism.setDefinedByAuthor(it["authorDef"] == "yes")
-					newMechanism.setDomain(it["domain"] == null ? "No Domain" : it["domain"])
-					newMechanism.setOwner(currentPrimaryStudy)
-					currentPrimaryStudy.addToMechanisms(newMechanism)
-					currentPrimaryStudy.save(flush:true)
-				}
-				
-			}
-		}
-	}
-	//*/
-
-	
 	def parsePrimaryStudies2 (String filePath){
+		
 		def importer = new PrimaryStudyExcelImporter (filePath)
 		
 		importer.getBooks().findAll  { it["include"] == 'yes' }.each {
 			def key = it["id"]
+			//Missing country and institution
 			def currentPrimaryStudy = PrimaryStudy.findByStudyId(key)
 			if (!currentPrimaryStudy)
 				currentPrimaryStudy = new PrimaryStudy()
@@ -72,6 +22,21 @@ class ExcelParser {
 				currentPrimaryStudy.setStudyId(it["id"])
 			if (it["title"])
 				currentPrimaryStudy.setTitle(it["title"])
+				
+			if (it["country"]){
+				currentPrimaryStudy?.authors?.clear()
+				it["country"].split(";").each { authorName ->
+					currentPrimaryStudy.addToCountries(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ).toLowerCase().trim())
+				}
+			}
+			
+			if (it["institution"]){
+				currentPrimaryStudy?.authors?.clear()
+				it["institution"].split(";").each { authorName ->
+					currentPrimaryStudy.addToInstitutions(authorName.replaceAll( /[^0-9a-zA-Z\\,\\. ]/, '' ).toLowerCase().trim())
+				}
+			}
+			
 			if (it["source"])
 				currentPrimaryStudy.setConferenceSource(it["source"])
 			if (it["year"])
@@ -99,10 +64,8 @@ class ExcelParser {
 				def newMechanism = UsedMechanism.findByMechanismId(mechRef)
 				if (!newMechanism){
 					newMechanism = new UsedMechanism()
-					println "mechRef="+mechRef
 					newMechanism.setMechanismId(mechRef)
 					newMechanism.save(failOnError: true)
-					println "after"
 				}
 				
 				def mechanismAss = currentPrimaryStudy.getMechanisms().find {it.mechanism == newMechanism}
@@ -119,6 +82,7 @@ class ExcelParser {
 				currentPrimaryStudy.addToMechanisms(mechanismAss)
 			}
 		}
+		println "here3"
 	}
 
 	def parseMechanisms (String filePath){
@@ -133,8 +97,8 @@ class ExcelParser {
 				currentMechanism.setMechanismId(it["id"])
 			if (it["title"])
 				currentMechanism.setTitle(it["title"])
-			if (it["year"])
-				currentMechanism.setYear(it["year"].toInteger())
+			//if (it["year"])
+			//	currentMechanism.setYear(it["year"].toInteger())
 
 			if (it["authors"]) {
 				currentMechanism?.authors?.clear()

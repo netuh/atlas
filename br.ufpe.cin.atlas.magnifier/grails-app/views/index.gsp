@@ -94,12 +94,19 @@
 			<div id="controller-list" role="navigation">
 				<h2>Analyzes:</h2>
 				<ul>
+					<li class="controller"><g:link controller="analyses" action="generalInfo">General Information</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="empiricalStudies">Studies by Empirical Study Type</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="analysesByYear">Quantity of Each Empirical Study Type By Year</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="badMechanism">The Studies Which Uses Guide and Not</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="mechanismUsage">Which Mechanism Are Been Used More Often</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="authorProductivity">Which Authors Publish More</g:link></li>
 					<li class="controller"><g:link controller="analyses" action="mechanismByYear">How the Studies are Evolving on Mechanism Usage</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="predefinedEmpiricalStudies">Studies by Predefined Empirical Study Type</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="predefinedAnalysesByYear">Quantity of Each Empirical Predefined Empirical Study Type By Year</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="predefinedAnalysesStudyType">predefinedAnalysesStudyType</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="countryProductivity">Country Productivity</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="institutionProductivity">Institution Productivity</g:link></li>
+					<li class="controller"><g:link controller="analyses" action="multMethodDetails">Mult-Method Explained</g:link></li>
 				</ul>
 				<h2>Upload:</h2>
 				<ul>

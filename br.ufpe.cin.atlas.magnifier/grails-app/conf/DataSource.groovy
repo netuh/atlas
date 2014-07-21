@@ -83,7 +83,7 @@ environments {
 			
 			//# Cloudbees MySQL
 			/*
-			dbCreate = "update"
+			dbCreate = "create-drop"
 			url = "jdbc:mysql://ec2-23-21-211-172.compute-1.amazonaws.com:3306/atlas?useUnicode=yes&characterEncoding=UTF-8"
 			username = "netuh"
 			password = "pass1234"
